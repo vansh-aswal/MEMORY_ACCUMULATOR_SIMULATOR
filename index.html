@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Memory Accumulator Simulator</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<div class="container">
+    <h1>🧠 Memory Accumulator Simulator</h1>
+
+    <!-- Allocate -->
+    <div class="block">
+        <h3>Allocate Memory</h3>
+        <form method="POST">
+            <input type="number" name="size" placeholder="Enter size (KB)" required>
+            <button name="allocate_submit">Allocate</button>
+        </form>
+    </div>
+
+    <!-- Deallocate -->
+    <div class="block">
+        <h3>Deallocate Memory</h3>
+        <form method="POST">
+            <input type="number" name="pid" placeholder="Enter PID" required>
+            <button name="deallocate_submit">Deallocate</button>
+        </form>
+    </div>
+
+    <!-- Compact -->
+    <div class="block">
+        <h3>Compact Memory</h3>
+        <form method="POST">
+            <button name="compact_submit">Compact</button>
+        </form>
+    </div>
+
+    <!-- Relation -->
+    <div class="block">
+        <h3>Add Process Relation</h3>
+        <form method="POST">
+            <input type="number" name="from_pid" placeholder="Parent PID" required>
+            <input type="number" name="to_pid" placeholder="Child PID" required>
+            <button name="relation_submit">Add Relation</button>
+        </form>
+    </div>
+
+    <!-- Show Graph -->
+    <div class="block">
+        <h3>Process Graph</h3>
+        <form method="POST">
+            <button name="graph_submit">Show Graph</button>
+        </form>
+    </div>
+
+    <!-- View Memory -->
+    <div class="block">
+        <h3>View Memory Map</h3>
+        <form method="POST">
+            <button name="view_submit">View Memory</button>
+        </form>
+    </div>
+
+    <!-- Logout -->
+    <div class="block">
+        <h3>Logout</h3>
+        <form method="POST" action="/logout_action">
+            <button name="logout_submit">Logout</button>
+        </form>
+    </div>
+
+    <!-- Output Section -->
+    <div class="output">
+        {% for key, value in outputs.items() %}
+            <h3>{{ key|capitalize }} Output:</h3>
+
+            {% if key == "display" %}
+            <table class="memory-table">
+                <thead>
+                    <tr>
+                        <th>PID</th>
+                        <th>Start Addr</th>
+                        <th>End Addr</th>
+                        <th>Size (KB)</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in value %}
+                    <tr>
+                        <td>{{ row.pid }}</td>
+                        <td>{{ row.start }}</td>
+                        <td>{{ row.end }}</td>
+                        <td>{{ row.size }}</td>
+                        <td>{{ row.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <pre>{{ value }}</pre>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
