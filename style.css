@@ -1,0 +1,100 @@
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(to bottom right, #b3e5fc, #e1f5fe, #ffffff);
+  min-height: 100vh;
+}
+
+.container {
+  width: 85%;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+/* ✨ Animated Heading ✨ */
+h1 {
+  color: #0277bd;
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+  animation: fadeZoomIn 1.5s ease-in-out forwards;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+@keyframes fadeZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.block {
+  margin: 15px 0;
+  padding: 10px;
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #0288d1;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out, transform 0.2s;
+}
+
+button:hover {
+  background: #01579b;
+  transform: scale(1.05);
+}
+
+.output {
+  background: #f8fbff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: inset 0 0 5px #b3e5fc;
+}
+
+/* Table Styling */
+.memory-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 0.95em;
+}
+
+.memory-table th,
+.memory-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.memory-table th {
+  background: #81d4fa;
+  color: #01579b;
+}
+
+.memory-table tr:nth-child(even) {
+  background: #e1f5fe;
+}
+
+.memory-table tr:hover {
+  background: #b3e5fc;
+  transition: 0.3s;
+}
